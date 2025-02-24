@@ -11,6 +11,12 @@ export const routes = {
     edit: (id: string) => `/user/edit/${id}`,
     userDetail: (id: string) => `/user/${id}`,
   },
+<<<<<<< HEAD
+=======
+  setting: {
+    dashboard: '/setting'
+  },
+>>>>>>> 1b7e305 (settin)
   patient: {
     dashboard: '/patient',
     create: '/patient/create',

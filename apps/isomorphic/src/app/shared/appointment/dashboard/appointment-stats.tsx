@@ -28,19 +28,28 @@ const statData: StatType[] = [
     icon: PiCalendarCheck,
   },
   {
+<<<<<<< HEAD
     title: 'Total Patients',
+=======
+    title: 'Schedule Patients',
+>>>>>>> 1b7e305 (settin)
     amount: '287',
     increased: true,
     percentage: '32.40',
     icon: PiCheckCircle,
   },
   {
+<<<<<<< HEAD
     title: 'Total Dockters',
+=======
+    title: 'Waiting List',
+>>>>>>> 1b7e305 (settin)
     amount: '77',
     increased: false,
     percentage: '32.40',
     icon: PiClock,
   },
+<<<<<<< HEAD
   // {
   //   title: 'Total Users',
   //   amount: '2,430',
@@ -48,6 +57,15 @@ const statData: StatType[] = [
   //   percentage: '32.40',
   //   icon: PiPhoneSlash,
   // },
+=======
+  {
+    title: 'Cancelled',
+    amount: '2,430',
+    increased: true,
+    percentage: '32.40',
+    icon: PiPhoneSlash,
+  },
+>>>>>>> 1b7e305 (settin)
 ];
 
 export type StatType = {

@@ -7,11 +7,19 @@ import { usePathname } from 'next/navigation';
 import { Button, Title } from 'rizzui';
 import cn from '@core/utils/class-names';
 import { PiArrowLineRight, PiUserCirclePlus } from 'react-icons/pi';
+<<<<<<< HEAD
 import { FcGoogle } from 'react-icons/fc';
 import OrSeparation from '@/app/shared/auth-layout/or-separation';
 import { siteConfig } from '@/config/site.config';
 import { BsFacebook } from 'react-icons/bs';
 
+=======
+// import { FcGoogle } from 'react-icons/fc';
+// import OrSeparation from '@/app/shared/auth-layout/or-separation';
+// import { BsFacebook } from 'react-icons/bs';
+import { siteConfig } from '@/config/site.config';
+import Logo from '@core/components/logo';
+>>>>>>> 1b7e305 (settin)
 function AuthNavLink({
   href,
   children,
@@ -65,7 +73,11 @@ export default function AuthWrapperFour({
         >
           <div className="flex flex-col items-center">
             <Link href={'/'} className="mb-7 inline-block max-w-[64px] lg:mb-9">
+<<<<<<< HEAD
               <Image src={siteConfig.icon} alt={siteConfig.title} />
+=======
+              <Logo className='w-[180px]' />
+>>>>>>> 1b7e305 (settin)
             </Link>
             <Title
               as="h2"
@@ -74,7 +86,11 @@ export default function AuthWrapperFour({
               {title}
             </Title>
           </div>
+<<<<<<< HEAD
           {isSocialLoginActive && (
+=======
+          {/* {isSocialLoginActive && (
+>>>>>>> 1b7e305 (settin)
             <>
               <div className="flex flex-col gap-4 pb-6 md:flex-row md:gap-6 xl:pb-7">
                 <Button variant="outline" className="h-11 w-full">
@@ -92,7 +108,11 @@ export default function AuthWrapperFour({
                 className="mb-5 2xl:mb-7"
               />
             </>
+<<<<<<< HEAD
           )}
+=======
+          )} */}
+>>>>>>> 1b7e305 (settin)
 
           {children}
         </div>
@@ -107,22 +127,29 @@ function AuthHeader() {
   return (
     <header className="flex items-center justify-between p-4 lg:px-16 lg:py-6 2xl:px-24">
       <Link href={'/'}>
+<<<<<<< HEAD
         <Image
           src={siteConfig.logo}
           alt={siteConfig.title}
           className="dark:invert"
           priority
         />
+=======
+        <Logo className='w-[180px]' />
+>>>>>>> 1b7e305 (settin)
       </Link>
       <div className="flex items-center space-x-2 md:space-x-4">
         <AuthNavLink href={routes.auth.signIn4}>
           <PiArrowLineRight className="h-4 w-4" />
           <span>Login</span>
         </AuthNavLink>
+<<<<<<< HEAD
         <AuthNavLink href={routes.auth.signUp4}>
           <PiUserCirclePlus className="h-4 w-4" />
           <span>Sign Up</span>
         </AuthNavLink>
+=======
+>>>>>>> 1b7e305 (settin)
       </div>
     </header>
   );
@@ -146,6 +173,7 @@ const footerMenu = [
 function AuthFooter() {
   return (
     <footer className="flex flex-col-reverse items-center justify-between px-4 py-5 lg:flex-row lg:px-16 lg:py-6 2xl:px-24 2xl:py-10">
+<<<<<<< HEAD
       <div className="text-center leading-relaxed text-gray-500 lg:text-start">
         © Copyright 2023. Theme by{' '}
         <Link
@@ -155,6 +183,10 @@ function AuthFooter() {
           RedQ
         </Link>
         , all rights reserved.
+=======
+      <div className="w-max text-center text-[12px] leading-relaxed text-gray-500 lg:text-start">
+        © Copyright 2025 by Solum Clinic Pty Ltd, all rights reserved. Develop by Xpro Group Pty Ltd.
+>>>>>>> 1b7e305 (settin)
       </div>
       <div className="-mx-2.5 flex items-center justify-end pb-3 font-medium text-gray-700 lg:w-1/2 lg:pb-0">
         {footerMenu.map((item) => (

@@ -38,6 +38,10 @@
     "@react-email/section": "0.0.14",
     "@react-email/tailwind": "0.1.0",
     "@react-email/text": "0.0.10",
+<<<<<<< HEAD
+=======
+    "@swc/helpers": "^0.5.15",
+>>>>>>> 1b7e305 (settin)
     "@t3-oss/env-nextjs": "^0.11.1",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tanstack/match-sorter-utils": "^8.19.4",

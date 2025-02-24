@@ -16,7 +16,11 @@ const initialValues: LoginSchema = {
 
 export default function SignInForm() {
   const isMedium = useMedia('(max-width: 1200px)', false);
+<<<<<<< HEAD
   const onSubmit: SubmitHandler<LoginSchema> = (data) => {
+=======
+  const onSubmit: SubmitHandler<LoginSchema> = (data: any) => {
+>>>>>>> 1b7e305 (settin)
     console.log(data);
   };
 

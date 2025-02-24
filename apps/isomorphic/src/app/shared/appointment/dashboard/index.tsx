@@ -5,7 +5,11 @@ import AppointmentStats from '@/app/shared/appointment/dashboard/appointment-sta
 // import TotalAppointment from '@/app/shared/appointment/dashboard/total-appointment';
 // import Patients from '@/app/shared/appointment/dashboard/patients';
 // import PatientAppointment from '@/app/shared/appointment/dashboard/patient-appointment';
+<<<<<<< HEAD
 // import ScheduleList from '@/app/shared/appointment/dashboard/schedule-list';
+=======
+import ScheduleList from '@/app/shared/appointment/dashboard/schedule-list';
+>>>>>>> 1b7e305 (settin)
 import AppointmentTodo from '@/app/shared/appointment/dashboard/appointment-todo';
 
 export default function AppointmentDashboard() {
@@ -13,8 +17,13 @@ export default function AppointmentDashboard() {
     <div className="grid grid-cols-12 gap-6 @container @[59rem]:gap-7">
       <AppointmentStats className="col-span-full" />
       {/* <TotalAppointment className="col-span-full @[90rem]:col-span-7" /> */}
+<<<<<<< HEAD
       {/* <ScheduleList className="col-span-full @[59rem]:col-span-6 @[90rem]:col-span-5" /> */}
       <AppointmentTodo className="col-span-full @[59rem]:col-span-12 @[90rem]:col-span-12" />
+=======
+      <ScheduleList className="col-span-7 @[59rem]:col-span-7 @[90rem]:col-span-7" />
+      <AppointmentTodo className="col-span-5 @[59rem]:col-span-5 @[90rem]:col-span-5" />
+>>>>>>> 1b7e305 (settin)
       {/* <Patients className="col-span-full @[59rem]:col-span-6 @[90rem]:col-span-4" /> */}
       {/* <Department className="col-span-full @[59rem]:col-span-6 @[90rem]:col-span-4" /> */}
       {/* <UpcomingAppointmentTable className="col-span-full" /> */}
