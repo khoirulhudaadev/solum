@@ -18,8 +18,8 @@ export const config = {
     '/ecommerce/:path*',
     '/support/:path*',
     '/file/:path*',
-    '/file-manager',
-    '/invoice/:path*',
-    '/forms/profile-settings/:path*',
+    // '/file-manager',
+    // '/invoice/:path*',
+    // '/forms/profile-settings/:path*',
   ],
 };

@@ -4,11 +4,12 @@ import { HeaderCell } from '@/app/shared/table';
 import { Text, Checkbox, ActionIcon, Tooltip, Select } from 'rizzui';
 import EyeIcon from '@core/components/icons/eye';
 import AvatarCard from '@core/ui/avatar-card';
+import AvatarCard2 from '@core/ui/avatar-card2';
 import DeletePopover from '@/app/shared/delete-popover';
 import DateCell from '@core/ui/date-cell';
 import { Type } from '@/data/appointment-data';
 import { useState } from 'react';
-import { PiCheckCircleBold, PiClockBold } from 'react-icons/pi';
+import { PiCheckCircleBold, PiClockBold, PiCopy } from 'react-icons/pi';
 import { useModal } from '@/app/shared/modal-views/use-modal';
 import CreateUpdateAppointmentForm from '../appointment-form';
 import AppointmentDetails from './appointment-details';
@@ -64,7 +65,7 @@ export const GetColumns = ({
       ),
     },
     {
-      title: <HeaderCell title="APPOINT ID" />,
+      title: <HeaderCell title="ID" />,
       onHeaderCell: () => onHeaderCellClick('id'),
       dataIndex: 'id',
       key: 'id',
@@ -72,25 +73,27 @@ export const GetColumns = ({
       render: (id: string) => <Text>#{id}</Text>,
     },
     {
-      title: <HeaderCell title="DOCTOR NAME" />,
+      title: <HeaderCell title="PATIENT NAME" />,
       onHeaderCell: () => onHeaderCellClick('patient.name'),
       dataIndex: 'patient',
       key: 'patient',
       width: 250,
       render: (patient: { name: string; email: string }) => (
         <div>
-          <Text className="text-sm font-medium text-gray-900 dark:text-gray-700">
+          <p className="flex items-center gap-2 font-medium text-gray-700">
             {patient.name}
-          </Text>
-          {patient.email && (
-            <Text className="text-[13px] text-gray-500">{patient.email}</Text>
-          )}
+            <PiCopy className="cursor-pointer active:scale-[0.99]" />
+          </p>
+          <p className="flex items-center gap-2 font-medium text-gray-700">
+            {patient.email}
+            <PiCopy className="cursor-pointer active:scale-[0.99]" />
+          </p>
         </div>
       ),
     },
     {
       title: (
-        <HeaderCell title={<span className="whitespace-nowrap">Date</span>} />
+        <HeaderCell title={<span className="whitespace-nowrap">DATE</span>} />
       ),
       dataIndex: 'date',
       key: 'date',
@@ -104,7 +107,7 @@ export const GetColumns = ({
       key: 'doctor',
       width: 320,
       render: (doctor: { name: string; email: string; avatar: string, number: string }) => (
-        <AvatarCard
+        <AvatarCard2
           number={doctor.number}
           src={doctor.avatar}
           name={doctor.name}
@@ -127,9 +130,14 @@ export const GetColumns = ({
       width: 180,
       onHeaderCell: () => onHeaderCellClick('appointType'),
       render: (type: Type) => (
-        <Text className="whitespace-nowrap font-medium text-gray-900">
-          {type}
-        </Text>
+        <>
+          <p className="whitespace-nowrap font-medium text-gray-900">
+            {type}
+          </p>
+          <p className="whitespace-nowrap font-medium text-gray-500">
+            Reminder Sent
+          </p>
+        </>
       ),
     },
     {
@@ -138,41 +146,22 @@ export const GetColumns = ({
       dataIndex: 'appointStatus',
       key: 'appointStatus',
       width: 250,
-      render: (value: string) => <Text>{value}</Text>,
+      render: (value: string) => (
+        <>
+          <p className={`whitespace-nowrap font-medium ${value === 'Schedule' ? 'text-green-400' : value === 'Cancelled' ? 'text-red-400' : value === 'Waiting' ? 'text-yellow-400' : 'text-blue-400'}`}>
+            {value}
+          </p>
+          {
+            value === 'Schedule' || value === 'SCHEDULE' ? (
+              <p className={`whitespace-nowrap font-medium text-gray-700`}>
+                Reschedule From Previous Date
+              </p>
+            ) :
+              <></>
+          }
+        </>
+      )
     },
-    // {
-    //   title: <HeaderCell title="Duration" />,
-    //   dataIndex: 'duration',
-    //   key: 'duration',
-    //   width: 150,
-    //   render: (duration: number) => {
-    //     const durationHour = Math.trunc(duration / 60);
-    //     return (
-    //       <span className="whitespace-nowrap font-semibold">
-    //         {durationHour > 0 && `${Math.trunc(duration / 60)}h`}{' '}
-    //         {duration % 60 > 0 ? `${duration % 60}m` : null}
-    //       </span>
-    //     );
-    //   },
-    // },
-    // {
-    //   title: (
-    //     <HeaderCell
-    //       title="Payment"
-    //       sortable
-    //       ascending={
-    //         sortConfig?.direction === 'asc' && sortConfig?.key === 'amount'
-    //       }
-    //     />
-    //   ),
-    //   dataIndex: 'amount',
-    //   key: 'amount',
-    //   onHeaderCell: () => onHeaderCellClick('amount'),
-    //   width: 180,
-    //   render: (amount: number) => (
-    //     <span className="whitespace-nowrap font-semibold">${amount}</span>
-    //   ),
-    // },
     {
       title: (
         <HeaderCell

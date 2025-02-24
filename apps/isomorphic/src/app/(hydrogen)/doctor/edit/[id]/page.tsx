@@ -1,18 +1,18 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { SubmitHandler } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { SubmitHandler, Controller } from 'react-hook-form';
 // import { PiClock, PiEnvelopeSimple } from 'react-icons/pi';
-import { Form } from '@core/ui/form';
-import { Loader, Text, Input, Textarea } from 'rizzui';
 import FormGroup from '@/app/shared/form-group';
-import FormFooter from '@core/components/form-footer';
 import {
   defaultValues,
   personalInfoFormSchema,
   PersonalInfoFormTypes,
 } from '@/validators/personal-info.schema';
+import FormFooter from '@core/components/form-footer';
+import { Form } from '@core/ui/form';
+import { Input, Loader, Text, Textarea } from 'rizzui';
 // import UploadZone from '@core/ui/file-upload/upload-zone';
 // import { countries, roles, timezones } from '@/data/forms/my-details';
 import AvatarUpload from '@core/ui/file-upload/avatar-upload';

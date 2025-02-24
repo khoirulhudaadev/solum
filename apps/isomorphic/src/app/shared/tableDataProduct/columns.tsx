@@ -1,15 +1,14 @@
 'use client';
 
-import DeletePopover from '@/app/shared/delete-popover';
+import Link from 'next/link';
 import { HeaderCell } from '@/app/shared/table';
+import { Badge, Text, Tooltip, ActionIcon, Checkbox } from 'rizzui';
 import { routes } from '@/config/routes';
 import EyeIcon from '@core/components/icons/eye';
 import PencilIcon from '@core/components/icons/pencil';
-import TableAvatar from '@core/ui/avatar-card';
+import AvatarCard from '@core/ui/avatar-card';
 import DateCell from '@core/ui/date-cell';
-import Link from 'next/link';
-import { PiCopy } from 'react-icons/pi';
-import { ActionIcon, Badge, Checkbox, Text, Tooltip } from 'rizzui';
+import DeletePopover from '@/app/shared/delete-popover';
 
 function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
@@ -88,114 +87,42 @@ export const getColumns = ({
       ),
     },
     {
-      title: <HeaderCell title="DOCTOR ID" />,
-      dataIndex: 'id',
-      key: 'id',
+      title: <HeaderCell title="SKU" />,
+      dataIndex: 'sku',
+      key: 'sku',
       width: 120,
       render: (value: string) => <Text>#{value}</Text>,
     },
     {
-      title: <HeaderCell title="NAME" />,
+      title: <HeaderCell title="PRODUCT NAME" />,
       dataIndex: 'name',
       key: 'name',
-      width: 170,
-      render: (name: any) => (
-        <p className="flex items-center gap-2 font-medium text-gray-700">
-          {name}
-        </p>
-      ),
+      width: 300,
+      render: (value: string) => <Text>{value}</Text>,
     },
     {
-      title: <HeaderCell title="GENDER" />,
-      dataIndex: 'gender',
-      key: 'gender',
+      title: <HeaderCell title="PRICE" />,
+      dataIndex: 'price',
+      key: 'price',
       width: 150,
-      render: (value: string) => (
-        <Text className="font-medium text-gray-700">{value}</Text>
-      ),
-    },
-    // {
-    //   title: (
-    //     <HeaderCell
-    //       title="BIRTH DATE"
-    //       sortable
-    //       ascending={
-    //         sortConfig?.direction === 'asc' && sortConfig?.key === 'createdAt'
-    //       }
-    //     />
-    //   ),
-    //   onHeaderCell: () => onHeaderCellClick('createdAt'),
-    //   dataIndex: 'createdAt',
-    //   key: 'createdAt',
-    //   width: 200,
-    //   render: (value: Date) => <DateCell date={value} />,
-    // },
-    {
-      title: <HeaderCell title="CONTACT" />,
-      dataIndex: 'number',
-      key: 'number',
-      width: 150,
-      render: (_: any, row: any) => (
-        <>
-          <p className="flex items-center gap-2 font-medium text-gray-700">
-            {row.email}
-            <PiCopy className="cursor-pointer active:scale-[0.99]" />
-          </p>
-          <p className="flex items-center text-slate-400 gap-2 font-medium">
-            {row.number}
-            <PiCopy className="cursor-pointer active:scale-[0.99]" />
-          </p>
-        </>
-      ),
+      render: (value: string) => <Text>{value}</Text>,
     },
     {
-      title: <HeaderCell title="SPECIALIST" />,
-      dataIndex: 'specialist',
-      key: 'specialist',
-      width: 150,
-      render: (value: string) => (
-        <Text className="font-medium text-gray-700">{value}</Text>
+      title: (
+        <HeaderCell
+          title="CREATED"
+          sortable
+          ascending={
+            sortConfig?.direction === 'asc' && sortConfig?.key === 'createdAt'
+          }
+        />
       ),
+      onHeaderCell: () => onHeaderCellClick('createdAt'),
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      width: 200,
+      render: (value: Date) => <DateCell date={value} />,
     },
-    // {
-    //   title: (
-    //     <HeaderCell
-    //       title="Phone"
-    //       sortable
-    //       ascending={
-    //         sortConfig?.direction === 'asc' && sortConfig?.key === 'createdAt'
-    //       }
-    //     />
-    //   ),
-    //   onHeaderCell: () => onHeaderCellClick('createdAt'),
-    //   dataIndex: 'createdAt',
-    //   key: 'createdAt',
-    //   width: 200,
-    //   render: (value: Date) => <DateCell clock={true} date={value} />,
-    // },
-    // {
-    //   title: (
-    //     <HeaderCell
-    //       title="Modified"
-    //       sortable
-    //       ascending={
-    //         sortConfig?.direction === 'asc' && sortConfig?.key === 'updatedAt'
-    //       }
-    //     />
-    //   ),
-    //   onHeaderCell: () => onHeaderCellClick('updatedAt'),
-    //   dataIndex: 'updatedAt',
-    //   key: 'updatedAt',
-    //   width: 200,
-    //   render: (value: Date) => <DateCell clock={true} date={value} />,
-    // },
-    // {
-    //   title: <HeaderCell title="Status" />,
-    //   dataIndex: 'status',
-    //   key: 'status',
-    //   width: 140,
-    //   render: (value: string) => getStatusBadge(value),
-    // },
     {
       // Need to avoid this issue -> <td> elements in a large <table> do not have table headers.
       title: <HeaderCell title="Actions" className="opacity-0" />,
@@ -206,15 +133,11 @@ export const getColumns = ({
         <div className="flex items-center justify-end gap-3 pe-4">
           <Tooltip
             size="sm"
-            content={'Edit Data Doctor'}
+            content={'Edit Data Product'}
             placement="top"
             color="invert"
           >
-            <Link href={routes.forms.profileSettings}
-              onClick={() => {
-                localStorage.setItem('role', 'doctor')
-              }}
-            >
+            <Link href={routes.product.create}>
               <ActionIcon
                 as="span"
                 size="sm"
@@ -227,15 +150,11 @@ export const getColumns = ({
           </Tooltip>
           <Tooltip
             size="sm"
-            content={'View Data Doctor'}
+            content={'View Data Product'}
             placement="top"
             color="invert"
           >
-            <Link href={routes.forms.profileSettings}
-              onClick={() => {
-                localStorage.setItem('role', 'doctor')
-              }}
-            >
+            <Link href={routes.product.productDetail(row.id)}>
               <ActionIcon
                 as="span"
                 size="sm"
@@ -270,7 +189,7 @@ export const getWidgetColumns = ({
       width: 90,
       render: (value: string, row: any) => (
         <Link
-          href={routes.doctor.edit(row.id)}
+          href={routes.eCommerce.editOrder(row.id)}
           className="ps-4 hover:text-gray-900 hover:underline"
         >
           #{value}
@@ -283,7 +202,7 @@ export const getWidgetColumns = ({
       key: 'customer',
       width: 300,
       render: (_: any, row: any) => (
-        <TableAvatar
+        <AvatarCard
           src={row.avatar}
           name={row.name}
           number={row.number}
@@ -371,11 +290,7 @@ export const getWidgetColumns = ({
             placement="top"
             color="invert"
           >
-            <Link href={routes.forms.profileSettings}
-              onClick={() => {
-                localStorage.setItem('role', 'doctor')
-              }}
-            >
+            <Link href={routes.product.edit(row)}>
               <ActionIcon
                 as="span"
                 size="sm"
@@ -393,11 +308,7 @@ export const getWidgetColumns = ({
             placement="top"
             color="invert"
           >
-            <Link href={routes.forms.profileSettings}
-              onClick={() => {
-                localStorage.setItem('role', 'doctor')
-              }}
-            >
+            <Link href={routes.product.productDetail(row.id)}>
               <ActionIcon
                 as="span"
                 size="sm"

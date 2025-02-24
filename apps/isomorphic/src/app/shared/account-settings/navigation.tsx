@@ -69,7 +69,7 @@ const menuItemsDocter: menuInterface[] = [
     value: '/forms/profile-settings/billing',
   },
   {
-    label: 'Certifications',
+    label: 'Qualifications',
     value: '/forms/profile-settings/certifications',
   },
   {
@@ -81,7 +81,7 @@ const menuItemsDocter: menuInterface[] = [
     value: '/forms/profile-settings/calendar',
   },
   {
-    label: 'Integration',
+    label: 'Meetings Type',
     value: '/forms/profile-settings/integration',
   },
 ];

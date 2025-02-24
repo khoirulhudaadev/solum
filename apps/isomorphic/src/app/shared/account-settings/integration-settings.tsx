@@ -32,9 +32,6 @@ export default function IntegrationSettingsView() {
             key={`team-${index}`}
             className="col-span-2 my-3 flex gap-3 rounded-lg border border-muted p-6 sm:my-4"
           >
-            <div className="relative flex h-9 w-9 flex-shrink-0 items-center justify-center overflow-hidden">
-              {currentTeam.icon}
-            </div>
             <div className="flex flex-grow flex-col sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <Title as="h3" className="mb-1 text-base font-semibold">

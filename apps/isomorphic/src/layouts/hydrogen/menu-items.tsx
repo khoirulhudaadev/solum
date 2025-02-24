@@ -59,11 +59,7 @@ export const menuItems = [
   },
   {
     name: 'Settings',
-<<<<<<< HEAD
-    href: routes.forms.profileSettings,
-=======
     href: routes.setting.dashboard,
->>>>>>> 1b7e305 (settin)
     icon: <PiGear />,
   },
 ];

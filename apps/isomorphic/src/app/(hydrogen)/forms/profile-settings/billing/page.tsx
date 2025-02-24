@@ -1,10 +1,10 @@
 import BillingSettingsView from '@/app/shared/account-settings/billing-settings';
-import EventCalendarView from '@/app/shared/event-calendar';
 import EventForm from '@/app/shared/event-calendar/event-form';
 import ExportButton from '@/app/shared/export-button';
 import ModalButton from '@/app/shared/modal-button';
 import { metaObject } from '@/config/site.config';
 import { eventData } from '@/data/event-data';
+import AppointmentListPage from '../appointment/list/page';
 
 export const metadata = {
 ...metaObject('Password'),
@@ -28,6 +28,7 @@ return (
         </div>
 
         <BillingSettingsView />
+        <AppointmentListPage />
     </>
 );
 }

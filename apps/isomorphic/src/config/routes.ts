@@ -6,17 +6,20 @@ export const routes = {
     doctorDetail: (id: string) => `/doctor/${id}`,
   },
   user: {
-    dashboard: '/user', 
+    dashboard: '/user',
     create: '/user/create',
     edit: (id: string) => `/user/edit/${id}`,
     userDetail: (id: string) => `/user/${id}`,
   },
-<<<<<<< HEAD
-=======
   setting: {
     dashboard: '/setting'
   },
->>>>>>> 1b7e305 (settin)
+  product: {
+    dashboard: '/product',
+    create: '/product/create',
+    edit: (id: string) => `/user/edit/${id}`,
+    productDetail: (id: string) => `/user/${id}`,
+  },
   patient: {
     dashboard: '/patient',
     create: '/patient/create',

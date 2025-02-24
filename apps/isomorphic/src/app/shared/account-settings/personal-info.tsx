@@ -14,7 +14,6 @@ import FormFooter from '@core/components/form-footer';
 import { Form } from '@core/ui/form';
 import { Input, Loader, Text, Textarea } from 'rizzui';
 // import UploadZone from '@core/ui/file-upload/upload-zone';
-// import { countries, roles, timezones } from '@/data/forms/my-details';
 import AvatarUpload from '@core/ui/file-upload/avatar-upload';
 
 const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
@@ -54,35 +53,17 @@ export default function PersonalInfoView() {
           <>
             <FormGroup
               title="Personal Info"
-              description="Update your photo and personal details here"
               className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
             />
 
             <div className="mb-10 grid grid-cols-2 gap-7 divide-y divide-dashed divide-gray-200 @2xl:gap-9 @3xl:gap-11">
               <div>
                 <FormGroup
-                  title="First Name"
+                  title="Email"
                   className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
                 >
                   <Input
-                    placeholder="First Name"
-                    {...register('first_name')}
-                    error={errors.first_name?.message}
-                    className="flex-grow"
-                  />
-                  {/* <Input
-                    placeholder="Last Name"
-                    {...register('last_name')}
-                    error={errors.last_name?.message}
-                    className="flex-grow"
-                  /> */}
-                </FormGroup>
-                <FormGroup
-                  title="Last Name"
-                  className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
-                >
-                  <Input
-                    placeholder="Last Name"
+                    placeholder="Email"
                     {...register('first_name')}
                     error={errors.first_name?.message}
                     className="flex-grow"
@@ -99,35 +80,46 @@ export default function PersonalInfoView() {
                     className="flex-grow"
                   />
                 </FormGroup>
+                <FormGroup
+                  title="Birth of Date"
+                  className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
+                >
+                  <Input
+                    placeholder="Birth of Dae"
+                    {...register('first_name')}
+                    error={errors.first_name?.message}
+                    className="flex-grow"
+                  />
+                </FormGroup>
               </div>
               <div>
                 {
                   localStorage.getItem('role') === 'doctor' ? (
                     <>
-                        <FormGroup
-                          title="Specialist"
-                          className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
-                        >
-                          <Input
-                            placeholder="Specialist"
-                            {...register('first_name')}
-                            error={errors.first_name?.message}
-                            className="flex-grow"
-                          />
-                        </FormGroup>
-                        <FormGroup
-                          title="Gender"
-                          className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
-                        >
-                          <Input
-                            placeholder="Gender"
-                            {...register('first_name')}
-                            error={errors.first_name?.message}
-                            className="flex-grow"
-                          />
-                        </FormGroup>
+                      <FormGroup
+                        title="Specialist"
+                        className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
+                      >
+                        <Input
+                          placeholder="Specialist"
+                          {...register('first_name')}
+                          error={errors.first_name?.message}
+                          className="flex-grow"
+                        />
+                      </FormGroup>
+                      <FormGroup
+                        title="Gender"
+                        className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
+                      >
+                        <Input
+                          placeholder="Gender"
+                          {...register('first_name')}
+                          error={errors.first_name?.message}
+                          className="flex-grow"
+                        />
+                      </FormGroup>
                     </>
-                  ):
+                  ) :
                     <>
                       <FormGroup
                         title="Medicare Card"
@@ -154,33 +146,45 @@ export default function PersonalInfoView() {
                     </>
                 }
                 <FormGroup
-                  title="Email"
+                  title="First Name"
                   className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
                 >
                   <Input
-                    placeholder="Email"
+                    placeholder="First Name"
                     {...register('first_name')}
                     error={errors.first_name?.message}
                     className="flex-grow"
                   />
                 </FormGroup>
-                {/* <FormGroup
-                  title="Gender"
+                <FormGroup
+                  title="Last Name"
                   className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
                 >
                   <Input
-                    placeholder="Gender"
+                    placeholder="Last Name"
                     {...register('first_name')}
                     error={errors.first_name?.message}
                     className="flex-grow"
                   />
-                </FormGroup> */}
+                </FormGroup>
+                <FormGroup
+                  title="Your Photo"
+                  className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
+                >
+                  <div className="flex flex-col gap-6 @container @3xl:col-span-2">
+                    <AvatarUpload
+                      name="avatar"
+                      setValue={setValue}
+                      getValues={getValues}
+                      error={errors?.avatar?.message as string}
+                    />
+                  </div>
+                </FormGroup>
               </div>
             </div>
 
             <FormGroup
               title="Adress"
-              description="Update your photo and personal details here"
               className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
             />
 
@@ -196,12 +200,6 @@ export default function PersonalInfoView() {
                     error={errors.first_name?.message}
                     className="flex-grow"
                   />
-                  {/* <Input
-                    placeholder="Last Name"
-                    {...register('last_name')}
-                    error={errors.last_name?.message}
-                    className="flex-grow"
-                  /> */}
                 </FormGroup>
                 <FormGroup
                   title="Suburb"
@@ -386,21 +384,124 @@ export default function PersonalInfoView() {
               </FormGroup> */}
             </div>
 
+            <FormGroup
+              title="About Doctor"
+              className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
+            />
+
             <div className="mb-10 grid grid-cols-2 gap-7 divide-y divide-dashed divide-gray-200 @2xl:gap-9 @3xl:gap-11">
-                <FormGroup
-                    title="Your Photo"
-                    className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
-                >
-                    <div className="flex flex-col gap-6 @container @3xl:col-span-2">
-                    <AvatarUpload
-                        name="avatar"
-                        setValue={setValue}
-                        getValues={getValues}
-                        error={errors?.avatar?.message as string}
-                    />
-                    </div>
-                </FormGroup>
+              <FormGroup
+                title="Description"
+                className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
+              >
+                <Textarea
+                  placeholder="Description"
+                  // {...register('first_name')}
+                  error={errors.first_name?.message}
+                  className="flex-grow"
+                />
+              </FormGroup>
             </div>
+
+            {/* <FormGroup
+              title="Doctor Type"
+              className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
+            />
+
+            <div className="mb-10 grid grid-cols-2 gap-7 divide-y divide-dashed divide-gray-200 @2xl:gap-9 @3xl:gap-11">
+              <FormGroup
+                title="Type"
+                className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
+              >
+                <Controller
+                  control={control}
+                  name="country"
+                  render={({ field: { onChange, value } }) => {
+                    const handleCheckboxChange = (selectedValue: string) => {
+                      // Logic to add/remove selected country to the value array
+                      const newValue = value.includes(selectedValue)
+                        ? value.filter((item: string) => item !== selectedValue)
+                        : [...value, selectedValue];
+                      onChange(newValue);
+                    };
+
+                    return (
+                      <div className="col-span-full">
+                        <div className="dropdown">
+                          <button className="dropdown-toggle">
+                            Select Type
+                          </button>
+                          <div className="dropdown-menu">
+                            {doctorType.map((country: any) => (
+                              <div key={country.value} className="dropdown-item">
+                                <Checkbox
+                                  checked={value.includes(country.value)}
+                                  onChange={() => handleCheckboxChange(country.value)}
+                                  label={country.label}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        {errors?.country?.message && (
+                          <span className="error-text">{errors?.country?.message}</span>
+                        )}
+                      </div>
+                    );
+                  }}
+                />
+              </FormGroup>
+            </div> */}
+
+            {/* <FormGroup
+              title="Specialist Type"
+              className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
+            />
+
+            <div className="mb-10 grid grid-cols-2 gap-7 divide-y divide-dashed divide-gray-200 @2xl:gap-9 @3xl:gap-11">
+              <FormGroup
+                title="Type"
+                className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
+              >
+                <Controller
+                  control={control}
+                  name="country"
+                  render={({ field: { onChange, value: any } }) => {
+                    const handleCheckboxChange = (selectedValue: string) => {
+                      // Logic to add/remove selected country to the value array
+                      const newValue = value?.includes(selectedValue)
+                        ? value?.filter((item: string) => item !== selectedValue)
+                        : [...value, selectedValue];
+                      onChange(newValue);
+                    };
+
+                    return (
+                      <div className="col-span-full">
+                        <div className="dropdown">
+                          <button className="dropdown-toggle">
+                            Select Type
+                          </button>
+                          <div className="dropdown-menu">
+                            {specialistType.map((country: any) => (
+                              <div key={country.value} className="dropdown-item">
+                                <Checkbox
+                                  checked={value.includes(country.value)}
+                                  onChange={() => handleCheckboxChange(country.value)}
+                                  label={country.label}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        {errors?.country?.message && (
+                          <span className="error-text">{errors?.country?.message}</span>
+                        )}
+                      </div>
+                    );
+                  }}
+                />
+              </FormGroup>
+            </div> */}
 
             <FormFooter
               // isLoading={isLoading}
@@ -410,6 +511,6 @@ export default function PersonalInfoView() {
           </>
         );
       }}
-    </Form>
+    </Form >
   );
 }

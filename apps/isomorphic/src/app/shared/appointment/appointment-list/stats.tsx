@@ -21,7 +21,7 @@ type AppointmentStatsType = {
 
 const statData: StatType[] = [
   {
-    title: 'Total Appointment',
+    title: 'Upcoming Appointment',
     amount: '55',
     increased: true,
     percentage: '32.40',
@@ -29,7 +29,7 @@ const statData: StatType[] = [
     iconWrapperFill: '#F5A623',
   },
   {
-    title: 'Scheduled Patients',
+    title: 'Today Appointment',
     amount: '44',
     increased: true,
     percentage: '32.40',
@@ -37,7 +37,7 @@ const statData: StatType[] = [
     iconWrapperFill: '#11843C',
   },
   {
-    title: 'Waiting List',
+    title: 'Finished Appointment',
     amount: '33',
     increased: false,
     percentage: '32.40',
@@ -45,7 +45,7 @@ const statData: StatType[] = [
     iconWrapperFill: '#8A63D2',
   },
   {
-    title: 'Cancelled',
+    title: 'Cancelled Appointment',
     amount: '22',
     increased: true,
     percentage: '32.40',

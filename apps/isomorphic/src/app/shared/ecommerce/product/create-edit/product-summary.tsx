@@ -1,18 +1,18 @@
 import { Controller, useFormContext } from 'react-hook-form';
 import { Input } from 'rizzui';
 import cn from '@core/utils/class-names';
-import FormGroup from '@/app/shared/form-group';
-import {
-  categoryOption,
-  typeOption,
-} from '@/app/shared/ecommerce/product/create-edit/form-utils';
+// import {
+//   categoryOption,
+//   typeOption,
+// } from '@/app/shared/ecommerce/product/create-edit/form-utils';
 import dynamic from 'next/dynamic';
-import SelectLoader from '@core/components/loader/select-loader';
+// import SelectLoader from '@core/components/loader/select-loader';
 import QuillLoader from '@core/components/loader/quill-loader';
-const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
-  ssr: false,
-  loading: () => <SelectLoader />,
-});
+import FormGroupProduct from '@/app/shared/form-groupProduct';
+// const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
+//   ssr: false,
+//   loading: () => <SelectLoader />,
+// });
 const QuillEditor = dynamic(() => import('@core/ui/quill-editor'), {
   ssr: false,
   loading: () => <QuillLoader className="col-span-full h-[143px]" />,
@@ -26,9 +26,7 @@ export default function ProductSummary({ className }: { className?: string }) {
   } = useFormContext();
 
   return (
-    <FormGroup
-      title="Summary"
-      description="Edit your product description and necessary information from here"
+    <FormGroupProduct
       className={cn(className)}
     >
       <Input
@@ -44,36 +42,18 @@ export default function ProductSummary({ className }: { className?: string }) {
         error={errors.sku?.message as string}
       />
 
-      <Controller
-        name="type"
-        control={control}
-        render={({ field: { onChange, value } }) => (
-          <Select
-            dropdownClassName="!z-0 h-auto"
-            options={typeOption}
-            value={value}
-            onChange={onChange}
-            label="Product Type"
-            error={errors?.type?.message as string}
-            getOptionValue={(option) => option.value}
-          />
-        )}
+      <Input
+        label="Cost Price"
+        placeholder="Cost Price"
+        {...register('sku')}
+        error={errors.sku?.message as string}
       />
 
-      <Controller
-        name="categories"
-        control={control}
-        render={({ field: { onChange, value } }) => (
-          <Select
-            options={categoryOption}
-            value={value}
-            onChange={onChange}
-            label="Categories"
-            error={errors?.categories?.message as string}
-            getOptionValue={(option) => option.value}
-            dropdownClassName="h-auto"
-          />
-        )}
+      <Input
+        label="Sell Price"
+        placeholder="Sell Price"
+        {...register('sku')}
+        error={errors.sku?.message as string}
       />
 
       <Controller
@@ -89,6 +69,6 @@ export default function ProductSummary({ className }: { className?: string }) {
           />
         )}
       />
-    </FormGroup>
+    </FormGroupProduct>
   );
 }

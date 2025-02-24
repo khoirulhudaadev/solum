@@ -62,322 +62,334 @@ export const getColumns = ({
   handleSelectAll,
   onChecked,
 }: Columns) => [
-  {
-    title: (
-      <div className="ps-2">
-        <Checkbox
-          title={'Select All'}
-          onChange={handleSelectAll}
-          checked={checkedItems.length === data.length}
-          className="cursor-pointer"
+    {
+      title: (
+        <div className="ps-2">
+          <Checkbox
+            title={'Select All'}
+            onChange={handleSelectAll}
+            checked={checkedItems.length === data.length}
+            className="cursor-pointer"
+          />
+        </div>
+      ),
+      dataIndex: 'checked',
+      key: 'checked',
+      width: 30,
+      render: (_: any, row: any) => (
+        <div className="inline-flex ps-2">
+          <Checkbox
+            className="cursor-pointer"
+            checked={checkedItems.includes(row.id)}
+            {...(onChecked && { onChange: () => onChecked(row.id) })}
+          />
+        </div>
+      ),
+    },
+    {
+      title: <HeaderCell title="PATIENT ID" />,
+      dataIndex: 'id',
+      key: 'id',
+      width: 120,
+      render: (value: string) => <Text>#{value}</Text>,
+    },
+    {
+      title: <HeaderCell title="PATIENT NAME" />,
+      dataIndex: 'PATIENT NAME',
+      key: 'PATIENT NAME',
+      width: 300,
+      render: (_: any, row: any) => (
+        <TableAvatar
+          src={row.avatar}
+          name={row.name}
+          number={row.number}
+          description={row.email.toLowerCase()}
         />
-      </div>
-    ),
-    dataIndex: 'checked',
-    key: 'checked',
-    width: 30,
-    render: (_: any, row: any) => (
-      <div className="inline-flex ps-2">
-        <Checkbox
-          className="cursor-pointer"
-          checked={checkedItems.includes(row.id)}
-          {...(onChecked && { onChange: () => onChecked(row.id) })}
+      ),
+    },
+    {
+      title: <HeaderCell title="GENDER" />,
+      dataIndex: 'gender',
+      key: 'gender',
+      width: 150,
+      render: (value: string) => (
+        <Text className="font-medium text-gray-700">{value}</Text>
+      ),
+    },
+    {
+      title: (
+        <HeaderCell
+          title="BIRTH DATE"
+          sortable
+          ascending={
+            sortConfig?.direction === 'asc' && sortConfig?.key === 'createdAt'
+          }
         />
-      </div>
-    ),
-  },
-  {
-    title: <HeaderCell title="PATIENT ID" />,
-    dataIndex: 'id',
-    key: 'id',
-    width: 120,
-    render: (value: string) => <Text>#{value}</Text>,
-  },
-  {
-    title: <HeaderCell title="PATIENT NAME" />,
-    dataIndex: 'PATIENT NAME',
-    key: 'PATIENT NAME',
-    width: 300,
-    render: (_: any, row: any) => (
-      <TableAvatar
-        src={row.avatar}
-        name={row.name}
-        number={row.number}
-        description={row.email.toLowerCase()}
-      />
-    ),
-  },
-  {
-    title: <HeaderCell title="GENDER" />,
-    dataIndex: 'gender',
-    key: 'gender',
-    width: 150,
-    render: (value: string) => (
-      <Text className="font-medium text-gray-700">{value}</Text>
-    ),
-  },
-  {
-    title: (
-      <HeaderCell
-        title="BIRTH DATE"
-        sortable
-        ascending={
-          sortConfig?.direction === 'asc' && sortConfig?.key === 'createdAt'
-        }
-      />
-    ),
-    onHeaderCell: () => onHeaderCellClick('createdAt'),
-    dataIndex: 'createdAt',
-    key: 'createdAt',
-    width: 200,
-    render: (value: Date) => <DateCell date={value} />,
-  },
-  {
-    title: (
-      <HeaderCell
-        title="LAST APPOINTMENT"
-        sortable
-        ascending={
-          sortConfig?.direction === 'asc' && sortConfig?.key === 'createdAt'
-        }
-      />
-    ),
-    onHeaderCell: () => onHeaderCellClick('createdAt'),
-    dataIndex: 'createdAt',
-    key: 'createdAt',
-    width: 200,
-    render: (value: Date) => <DateCell clock={true} date={value} />,
-  },
-  {
-    title: (
-      <HeaderCell
-        title="Modified"
-        sortable
-        ascending={
-          sortConfig?.direction === 'asc' && sortConfig?.key === 'updatedAt'
-        }
-      />
-    ),
-    onHeaderCell: () => onHeaderCellClick('updatedAt'),
-    dataIndex: 'updatedAt',
-    key: 'updatedAt',
-    width: 200,
-    render: (value: Date) => <DateCell clock={true} date={value} />,
-  },
-  {
-    title: <HeaderCell title="Status" />,
-    dataIndex: 'status',
-    key: 'status',
-    width: 140,
-    render: (value: string) => getStatusBadge(value),
-  },
-  {
-    // Need to avoid this issue -> <td> elements in a large <table> do not have table headers.
-    title: <HeaderCell title="Actions" className="opacity-0" />,
-    dataIndex: 'action',
-    key: 'action',
-    width: 130,
-    render: (_: string, row: any) => (
-      <div className="flex items-center justify-end gap-3 pe-4">
-        <Tooltip
-          size="sm"
-          content={'Edit Data Patient'}
-          placement="top"
-          color="invert"
-        >
-          <Link href={routes.forms.profileSettings}
-            onClick={() => {
-              localStorage.setItem('role', 'patient')
-            }}
+      ),
+      onHeaderCell: () => onHeaderCellClick('createdAt'),
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      width: 200,
+      render: (value: Date) => <DateCell date={value} />,
+    },
+    {
+      title: (
+        <HeaderCell
+          title="LAST APPOINTMENT"
+          sortable
+          ascending={
+            sortConfig?.direction === 'asc' && sortConfig?.key === 'createdAt'
+          }
+        />
+      ),
+      onHeaderCell: () => onHeaderCellClick('createdAt'),
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      width: 200,
+      render: (value: Date) => <DateCell clock={true} date={value} />,
+    },
+    {
+      title: (
+        <HeaderCell
+          title="Modified"
+          sortable
+          ascending={
+            sortConfig?.direction === 'asc' && sortConfig?.key === 'updatedAt'
+          }
+        />
+      ),
+      onHeaderCell: () => onHeaderCellClick('updatedAt'),
+      dataIndex: 'updatedAt',
+      key: 'updatedAt',
+      width: 200,
+      render: (value: Date) => <DateCell clock={true} date={value} />,
+    },
+    {
+      title: <HeaderCell title="Status" />,
+      dataIndex: 'status',
+      key: 'status',
+      width: 140,
+      render: (value: string) => getStatusBadge(value),
+    },
+    {
+      // Need to avoid this issue -> <td> elements in a large <table> do not have table headers.
+      title: <HeaderCell title="Actions" className="opacity-0" />,
+      dataIndex: 'action',
+      key: 'action',
+      width: 130,
+      render: (_: string, row: any) => (
+        <div className="flex items-center justify-end gap-3 pe-4">
+          <Tooltip
+            size="sm"
+            content={'Edit Data Patient'}
+            placement="top"
+            color="invert"
           >
-            <ActionIcon
-              as="span"
-              size="sm"
-              variant="outline"
-              className="hover:text-gray-700"
+            <Link href={routes.forms.profileSettings}
+              onClick={() => {
+                localStorage.setItem('role', 'patient')
+              }}
             >
-              <PencilIcon className="h-4 w-4" />
-            </ActionIcon>
-          </Link>
-        </Tooltip>
-        <Tooltip
-          size="sm"
-          content={'View Data Patient'}
-          placement="top"
-          color="invert"
-        >
-          <Link href={routes.patient.patientDetail(row.id)}>
-            <ActionIcon
-              as="span"
-              size="sm"
-              variant="outline"
-              className="hover:text-gray-700"
+              <ActionIcon
+                as="span"
+                size="sm"
+                variant="outline"
+                className="hover:text-gray-700"
+              >
+                <PencilIcon className="h-4 w-4" />
+              </ActionIcon>
+            </Link>
+          </Tooltip>
+          <Tooltip
+            size="sm"
+            content={'View Data Patient'}
+            placement="top"
+            color="invert"
+          >
+            <Link href={routes.forms.profileSettings}
+              onClick={() => {
+                localStorage.setItem('role', 'patient')
+              }}
             >
-              <EyeIcon className="h-4 w-4" />
-            </ActionIcon>
-          </Link>
-        </Tooltip>
-        <DeletePopover
-          title={`Delete the order`}
-          description={`Are you sure you want to delete this #${row.id} order?`}
-          onDelete={() => onDeleteItem(row.id)}
-        />
-      </div>
-    ),
-  },
-];
+              <ActionIcon
+                as="span"
+                size="sm"
+                variant="outline"
+                className="hover:text-gray-700"
+              >
+                <EyeIcon className="h-4 w-4" />
+              </ActionIcon>
+            </Link>
+          </Tooltip>
+          <DeletePopover
+            title={`Delete the order`}
+            description={`Are you sure you want to delete this #${row.id} order?`}
+            onDelete={() => onDeleteItem(row.id)}
+          />
+        </div>
+      ),
+    },
+  ];
 
 export const getWidgetColumns = ({
   sortConfig,
   onDeleteItem,
   onHeaderCellClick,
 }: Columns) => [
-  {
-    title: (
-      <HeaderCell title="Order ID" className="ps-4 [&>div]:whitespace-nowrap" />
-    ),
-    dataIndex: 'id',
-    key: 'id',
-    width: 90,
-    render: (value: string, row: any) => (
-      <Link
-        href={routes.eCommerce.editOrder(row.id)}
-        className="ps-4 hover:text-gray-900 hover:underline"
-      >
-        #{value}
-      </Link>
-    ),
-  },
-  {
-    title: <HeaderCell title="Customer" />,
-    dataIndex: 'customer',
-    key: 'customer',
-    width: 300,
-    render: (_: any, row: any) => (
-      <TableAvatar
-        src={row.avatar}
-        name={row.name}
-        number={row.number}
-        description={row.email.toLowerCase()}
-      />
-    ),
-  },
-  {
-    title: <HeaderCell title="Items" />,
-    dataIndex: 'items',
-    key: 'items',
-    width: 150,
-    render: (value: string) => (
-      <Text className="font-medium text-gray-700">{value}</Text>
-    ),
-  },
-  {
-    title: (
-      <HeaderCell
-        title="Price"
-        sortable
-        ascending={
-          sortConfig?.direction === 'asc' && sortConfig?.key === 'price'
-        }
-      />
-    ),
-    onHeaderCell: () => onHeaderCellClick('price'),
-    dataIndex: 'price',
-    key: 'price',
-    width: 150,
-    render: (value: string) => (
-      <Text className="font-medium text-gray-700">${value}</Text>
-    ),
-  },
-  {
-    title: (
-      <HeaderCell
-        title="Created"
-        sortable
-        ascending={
-          sortConfig?.direction === 'asc' && sortConfig?.key === 'createdAt'
-        }
-      />
-    ),
-    onHeaderCell: () => onHeaderCellClick('createdAt'),
-    dataIndex: 'createdAt',
-    key: 'createdAt',
-    width: 200,
-    render: (createdAt: Date) => <DateCell date={createdAt} />,
-  },
-  {
-    title: (
-      <HeaderCell
-        title="Modified"
-        sortable
-        ascending={
-          sortConfig?.direction === 'asc' && sortConfig?.key === 'updatedAt'
-        }
-      />
-    ),
-    onHeaderCell: () => onHeaderCellClick('updatedAt'),
-    dataIndex: 'updatedAt',
-    key: 'updatedAt',
-    width: 200,
-    render: (value: Date) => <DateCell date={value} />,
-  },
-  {
-    title: <HeaderCell title="Status" />,
-    dataIndex: 'status',
-    key: 'status',
-    width: 140,
-    render: (value: string) => getStatusBadge(value),
-  },
-  {
-    // Need to avoid this issue -> <td> elements in a large <table> do not have table headers.
-    title: <HeaderCell title="Actions" className="opacity-0" />,
-    dataIndex: 'action',
-    key: 'action',
-    width: 130,
-    render: (_: string, row: any) => (
-      <div className="flex items-center justify-end gap-3 pe-4">
-        <Tooltip
-          size="sm"
-          content={'Edit Order'}
-          placement="top"
-          color="invert"
+    {
+      title: (
+        <HeaderCell title="Order ID" className="ps-4 [&>div]:whitespace-nowrap" />
+      ),
+      dataIndex: 'id',
+      key: 'id',
+      width: 90,
+      render: (value: string, row: any) => (
+        <Link
+          href={routes.eCommerce.editOrder(row.id)}
+          className="ps-4 hover:text-gray-900 hover:underline"
         >
-          <Link href={routes.patient.edit(row)}>
-            <ActionIcon
-              as="span"
-              size="sm"
-              variant="outline"
-              aria-label={'Edit Order'}
-              className="hover:text-gray-700"
-            >
-              <PencilIcon className="h-4 w-4" />
-            </ActionIcon>
-          </Link>
-        </Tooltip>
-        <Tooltip
-          size="sm"
-          content={'View Order'}
-          placement="top"
-          color="invert"
-        >
-          <Link href={routes.patient.patientDetail(row.id)}>
-            <ActionIcon
-              as="span"
-              size="sm"
-              variant="outline"
-              aria-label={'View Order'}
-              className="hover:text-gray-700"
-            >
-              <EyeIcon className="h-4 w-4" />
-            </ActionIcon>
-          </Link>
-        </Tooltip>
-        <DeletePopover
-          title={`Delete the order`}
-          description={`Are you sure you want to delete this #${row.id} order?`}
-          onDelete={() => onDeleteItem(row.id)}
+          #{value}
+        </Link>
+      ),
+    },
+    {
+      title: <HeaderCell title="Customer" />,
+      dataIndex: 'customer',
+      key: 'customer',
+      width: 300,
+      render: (_: any, row: any) => (
+        <TableAvatar
+          src={row.avatar}
+          name={row.name}
+          number={row.number}
+          description={row.email.toLowerCase()}
         />
-      </div>
-    ),
-  },
-];
+      ),
+    },
+    {
+      title: <HeaderCell title="Items" />,
+      dataIndex: 'items',
+      key: 'items',
+      width: 150,
+      render: (value: string) => (
+        <Text className="font-medium text-gray-700">{value}</Text>
+      ),
+    },
+    {
+      title: (
+        <HeaderCell
+          title="Price"
+          sortable
+          ascending={
+            sortConfig?.direction === 'asc' && sortConfig?.key === 'price'
+          }
+        />
+      ),
+      onHeaderCell: () => onHeaderCellClick('price'),
+      dataIndex: 'price',
+      key: 'price',
+      width: 150,
+      render: (value: string) => (
+        <Text className="font-medium text-gray-700">${value}</Text>
+      ),
+    },
+    {
+      title: (
+        <HeaderCell
+          title="Created"
+          sortable
+          ascending={
+            sortConfig?.direction === 'asc' && sortConfig?.key === 'createdAt'
+          }
+        />
+      ),
+      onHeaderCell: () => onHeaderCellClick('createdAt'),
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      width: 200,
+      render: (createdAt: Date) => <DateCell date={createdAt} />,
+    },
+    {
+      title: (
+        <HeaderCell
+          title="Modified"
+          sortable
+          ascending={
+            sortConfig?.direction === 'asc' && sortConfig?.key === 'updatedAt'
+          }
+        />
+      ),
+      onHeaderCell: () => onHeaderCellClick('updatedAt'),
+      dataIndex: 'updatedAt',
+      key: 'updatedAt',
+      width: 200,
+      render: (value: Date) => <DateCell date={value} />,
+    },
+    {
+      title: <HeaderCell title="Status" />,
+      dataIndex: 'status',
+      key: 'status',
+      width: 140,
+      render: (value: string) => getStatusBadge(value),
+    },
+    {
+      // Need to avoid this issue -> <td> elements in a large <table> do not have table headers.
+      title: <HeaderCell title="Actions" className="opacity-0" />,
+      dataIndex: 'action',
+      key: 'action',
+      width: 130,
+      render: (_: string, row: any) => (
+        <div className="flex items-center justify-end gap-3 pe-4">
+          <Tooltip
+            size="sm"
+            content={'Edit Order'}
+            placement="top"
+            color="invert"
+          >
+            <Link href={routes.forms.profileSettings}
+              onClick={() => {
+                localStorage.setItem('role', 'doctor')
+              }}
+            >
+              <ActionIcon
+                as="span"
+                size="sm"
+                variant="outline"
+                aria-label={'Edit Order'}
+                className="hover:text-gray-700"
+              >
+                <PencilIcon className="h-4 w-4" />
+              </ActionIcon>
+            </Link>
+          </Tooltip>
+          <Tooltip
+            size="sm"
+            content={'View Order'}
+            placement="top"
+            color="invert"
+          >
+            <Link href={routes.forms.profileSettings}
+              onClick={() => {
+                localStorage.setItem('role', 'patient')
+              }}
+            >
+              <ActionIcon
+                as="span"
+                size="sm"
+                variant="outline"
+                aria-label={'View Order'}
+                className="hover:text-gray-700"
+              >
+                <EyeIcon className="h-4 w-4" />
+              </ActionIcon>
+            </Link>
+          </Tooltip>
+          <DeletePopover
+            title={`Delete the order`}
+            description={`Are you sure you want to delete this #${row.id} order?`}
+            onDelete={() => onDeleteItem(row.id)}
+          />
+        </div>
+      ),
+    },
+  ];

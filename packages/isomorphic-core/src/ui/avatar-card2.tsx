@@ -12,7 +12,7 @@ interface AvatarCardProps {
   description?: React.ReactNode;
 }
 
-export default function AvatarCard({
+export default function AvatarCard2({
   src,
   name,
   number,
@@ -29,17 +29,14 @@ export default function AvatarCard({
         {...avatarProps}
       />
       <figcaption className="grid gap-0.5">
-        <div>
-          <Text
-            className={cn(
-              "font-lexend text-sm font-medium text-gray-900 dark:text-gray-700",
-              nameClassName
-            )}
-          >
-            {name}
-          </Text>
-          <PiCopy className="cursor-pointer active:scale-[0.99]" />
-        </div>
+        <Text
+          className={cn(
+            "font-lexend text-sm font-medium text-gray-900 dark:text-gray-700",
+            nameClassName
+          )}
+        >
+          {name}
+        </Text>
         <div className="flex items-center gap-2">
           {description && <Text className="text-[13px] text-gray-500">{description}</Text>}
           <PiCopy className="cursor-pointer active:scale-[0.99]" />
