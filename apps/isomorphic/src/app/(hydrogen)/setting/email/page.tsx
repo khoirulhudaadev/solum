@@ -12,7 +12,7 @@ import {
 } from '@/validators/personal-info.schema';
 import FormFooter from '@core/components/form-footer';
 import { Form } from '@core/ui/form';
-import { Loader, Text } from 'rizzui';
+import { Text } from 'rizzui';
 
 const QuillEditor = dynamic(() => import('@core/ui/quill-editor'), {
     ssr: false,
@@ -41,30 +41,25 @@ export default function Communication() {
                 return (
                     <>
                         <FormGroup
-                            title="Add List"
-                            description="Update your photo and personal details here"
+                            title=""
                             className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
                         />
 
-                        <div className="mb-10 grid grid-cols-2 gap-7 divide-y divide-dashed divide-gray-200 @2xl:gap-9 @3xl:gap-11">
-                            <div>
-                                <FormGroup
-                                    title="Template"
-                                    className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
-                                >
-                                    <Controller
-                                        control={control}
-                                        name="bio"
-                                        render={({ field: { onChange, value } }) => (
-                                            <QuillEditor
-                                                value={value}
-                                                onChange={onChange}
-                                                className="@3xl:col-span-2 [&>.ql-container_.ql-editor]:min-h-[100px]"
-                                                labelClassName="font-medium text-gray-700 dark:text-gray-600 mb-1.5"
-                                            />
-                                        )}
-                                    />
-                                </FormGroup>
+                        <div className="mb-10 grid grid-cols-1 gap-7 divide-y divide-dashed divide-gray-200 @2xl:gap-9 @3xl:gap-11">
+                            <div className='w-full'>
+                                <Controller
+                                    control={control}
+                                    name="bio"
+                                    // render={({ field: { onChange, value } }) => (
+                                    render={() => (
+                                        <QuillEditor
+                                            // value={value}
+                                            // onChange={onChange}
+                                            className="@3xl:col-span-12 [&>.ql-container_.ql-editor]:min-h-[400px]"
+                                            labelClassName="font-medium text-gray-700 dark:text-gray-600 mb-1.5"
+                                        />
+                                    )}
+                                />
                             </div>
                         </div>
 

@@ -121,10 +121,10 @@ export default function DoctorTable({
         data={tableData}
         // @ts-ignore
         columns={visibleColumns}
-        expandable={{
-          expandIcon: CustomExpandIcon,
-          expandedRowRender: (record) => <ExpandedOrderRow record={record} />,
-        }}
+        // expandable={{
+        //   expandIcon: CustomExpandIcon,
+        //   expandedRowRender: (record) => <ExpandedOrderRow record={record} />,
+        // }}
         paginatorOptions={{
           pageSize,
           setPageSize,

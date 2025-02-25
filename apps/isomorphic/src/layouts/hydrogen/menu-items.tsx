@@ -54,12 +54,12 @@ export const menuItems = [
   },
   {
     name: 'Products',
-    href: routes.forms.notificationPreference,
+    href: routes.product.dashboard,
     icon: <PiBoundingBox />,
   },
   {
     name: 'Settings',
-    href: routes.setting.dashboard,
+    href: routes.setting.setup,
     icon: <PiGear />,
   },
 ];

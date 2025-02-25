@@ -1,17 +1,17 @@
 'use client';
 
-import { useState } from 'react';
-import toast from 'react-hot-toast';
-import { Element } from 'react-scroll';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
-import { Text } from 'rizzui';
-import cn from '@core/utils/class-names';
-import FormNav, {
+import {
   formParts,
 } from '@/app/shared/ecommerce/product/create-edit/form-nav';
-import ProductSummary from '@/app/shared/ecommerce/product/create-edit/product-summary';
 import { defaultValues } from '@/app/shared/ecommerce/product/create-edit/form-utils';
+import ProductSummary from '@/app/shared/ecommerce/product/create-edit/product-summary';
+import cn from '@core/utils/class-names';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { Element } from 'react-scroll';
+import { Text } from 'rizzui';
 // import ProductMedia from '@/app/shared/ecommerce/product/create-edit/product-media';
 // import PricingInventory from '@/app/shared/ecommerce/product/create-edit/pricing-inventory';
 // import ProductIdentifiers from '@/app/shared/ecommerce/product/create-edit/product-identifiers';
@@ -20,13 +20,12 @@ import { defaultValues } from '@/app/shared/ecommerce/product/create-edit/form-u
 // import DeliveryEvent from '@/app/shared/ecommerce/product/create-edit/delivery-event';
 // import ProductVariants from '@/app/shared/ecommerce/product/create-edit/product-variants';
 // import ProductTaxonomies from '@/app/shared/ecommerce/product/create-edit/product-tags';
-import FormFooter from '@core/components/form-footer';
+import { useLayout } from '@/layouts/use-layout';
 import {
   CreateProductInput,
   productFormSchema,
 } from '@/validators/create-product.schema';
-import { useLayout } from '@/layouts/use-layout';
-import { LAYOUT_OPTIONS } from '@/config/enums';
+import FormFooter from '@core/components/form-footer';
 
 const MAP_STEP_TO_COMPONENT = {
   [formParts.summary]: ProductSummary,
@@ -64,11 +63,11 @@ export default function CreateEditProduct({
 
   return (
     <div className="@container">
-      <FormNav
+      {/* <FormNav
         className={cn(
           layout === LAYOUT_OPTIONS.BERYLLIUM && 'z-[999] 2xl:top-[72px]'
         )}
-      />
+      /> */}
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}

@@ -36,11 +36,10 @@ const menuItems: menuInterface[] = [
   {
     label: 'Reminder Settings',
     value: '/setting/reminder',
-    notif: true
   },
 ];
 
-export default function Navigation({role}: {role: string}) {
+export default function Navigation() {
 // export default function Navigation() {
 
   const pathname = usePathname();

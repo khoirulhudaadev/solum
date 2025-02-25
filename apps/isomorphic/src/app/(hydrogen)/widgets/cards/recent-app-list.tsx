@@ -16,9 +16,9 @@ export default function RecentAppList() {
       }
     >
       <div className="grid grid-cols-1 gap-5">
-        {apps.map((app) => (
+        {apps.map((app: any) => (
           <div key={app.name} className="flex items-start">
-            <div className="me-3 shrink-0">{app.icon}</div>
+            {/* <div className="me-3 shrink-0">{app.icon}</div> */}
             <div className="flex w-[calc(100%-48px)] items-center justify-between">
               <div className="w-[calc(100%-40px)]">
                 <Title as="h4" className="mb-1 text-sm font-semibold">

@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { Controller, SubmitHandler } from 'react-hook-form';
+import { SubmitHandler } from 'react-hook-form';
 import toast from 'react-hot-toast';
 // import { PiClock, PiEnvelopeSimple } from 'react-icons/pi';
 import FormGroup from '@/app/shared/form-group';
@@ -12,12 +12,12 @@ import {
 } from '@/validators/personal-info.schema';
 import FormFooter from '@core/components/form-footer';
 import { Form } from '@core/ui/form';
-import { Input, Loader, Text, Textarea, Switch } from 'rizzui';
+import { Loader, Switch, Text } from 'rizzui';
 // import UploadZone from '@core/ui/file-upload/upload-zone';
 // import { countries, roles, timezones } from '@/data/forms/my-details';
-import AvatarUpload from '@core/ui/file-upload/avatar-upload';
+// import AvatarUpload from '@core/ui/file-upload/avatar-upload';
 
-export const types = [
+const types: any = [
     {
         label: 'SSL',
         value: 'SSL',

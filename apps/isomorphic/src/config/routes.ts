@@ -12,7 +12,8 @@ export const routes = {
     userDetail: (id: string) => `/user/${id}`,
   },
   setting: {
-    dashboard: '/setting'
+    dashboard: '/setting',
+    setup: '/setting/setup'
   },
   product: {
     dashboard: '/product',

@@ -1,15 +1,14 @@
 'use client';
 
-import React, { useCallback, useMemo, useState } from 'react';
-import dynamic from 'next/dynamic';
-import { useTable } from '@core/hooks/use-table';
-import { useColumn } from '@core/hooks/use-column';
-import { PiCaretDownBold, PiCaretUpBold } from 'react-icons/pi';
 import ControlledTable from '@/app/shared/controlled-table/index';
 import { getColumns } from '@/app/shared/tableDataProduct/columns';
-import { ActionIcon } from 'rizzui';
+import { useColumn } from '@core/hooks/use-column';
+import { useTable } from '@core/hooks/use-table';
 import cn from '@core/utils/class-names';
-import ExpandedOrderRow from '@/app/shared/tableDataProduct/expanded-row';
+import dynamic from 'next/dynamic';
+import React, { useCallback, useState } from 'react';
+import { PiCaretDownBold, PiCaretUpBold } from 'react-icons/pi';
+import { ActionIcon } from 'rizzui';
 // dynamic import
 const FilterElement = dynamic(
   () => import('@/app/shared/tableDataProduct/filter-element'),
@@ -121,10 +120,10 @@ export default function PatientTable({
         data={tableData}
         // @ts-ignore
         columns={visibleColumns}
-        expandable={{
-          expandIcon: CustomExpandIcon,
-          expandedRowRender: (record) => <ExpandedOrderRow record={record} />,
-        }}
+        // expandable={{
+        //   expandIcon: CustomExpandIcon,
+        //   expandedRowRender: (record) => <ExpandedOrderRow record={record} />,
+        // }}
         paginatorOptions={{
           pageSize,
           setPageSize,
